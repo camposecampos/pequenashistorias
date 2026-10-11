@@ -7,7 +7,7 @@ if(url){try{const u=new URL(url);if(u.protocol==='https:'&&u.hostname==='pay.hot
 
 // Clique para checkout e visualizacao de amostra sao microeventos; NAO equivalem a compra ou checkout carregado.
 document.querySelectorAll('a.checkout').forEach(link=>link.addEventListener('click',()=>{
- if(typeof fbq==='function') fbq('trackCustom','CheckoutClick',{content_name:'Pequenas Historias, Grandes Sementes',content_ids:['pequenas_historias_117'],value:29.90,currency:'BRL'});
+ if(typeof fbq==='function') fbq('trackCustom','CheckoutClick',{content_name:'Pequenas Historias, Grandes Sementes',content_ids:['pequenas_historias_117'],value:19.90,currency:'BRL'});
 }));
 document.querySelector('#sample-open')?.addEventListener('click',()=>{
  if(typeof fbq==='function') fbq('trackCustom','SampleView',{content_name:'Pequenas Historias, Grandes Sementes'});
