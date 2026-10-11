@@ -4,3 +4,11 @@ document.querySelector('#sample-close').addEventListener('click',()=>sample.clos
 sample.addEventListener('click',e=>{if(e.target===sample){const r=sample.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)sample.close();}});
 const url=window.SALES_CONFIG?.checkoutUrl;
 if(url){try{const u=new URL(url);if(u.protocol==='https:'&&u.hostname==='pay.hotmart.com'){u.searchParams.set('checkoutMode','10');const params=new URLSearchParams(window.location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(key=>{const value=params.get(key);if(value)u.searchParams.set(key,value);});document.querySelectorAll('.checkout').forEach(a=>{a.href=u.href;a.hidden=false;});document.querySelectorAll('.availability').forEach(p=>p.hidden=true);}}catch(e){console.warn('Checkout não configurado.');}}
+
+// Clique para checkout e visualizacao de amostra sao microeventos; NAO equivalem a compra ou checkout carregado.
+document.querySelectorAll('a.checkout').forEach(link=>link.addEventListener('click',()=>{
+ if(typeof fbq==='function') fbq('trackCustom','CheckoutClick',{content_name:'Pequenas Historias, Grandes Sementes',content_ids:['pequenas_historias_117'],value:29.90,currency:'BRL'});
+}));
+document.querySelector('#sample-open')?.addEventListener('click',()=>{
+ if(typeof fbq==='function') fbq('trackCustom','SampleView',{content_name:'Pequenas Historias, Grandes Sementes'});
+});
